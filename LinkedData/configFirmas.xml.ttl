@@ -1,0 +1,642 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix v: <http://linktegration.com/v/wls81/> . 
+@prefix i: <http://data.bci.cl/configFirmas.xml/> . 
+i:firmas a v:Domain .
+i:firmas v:hasConfigurationVersion "8.1.5.0" .
+i:firmas rdfs:label "firmas ( Domain )" .
+i:admin a v:Server .
+i:admin v:hasDomain i:firmas .
+i:admin v:hasListenAddress "161.131.159.27" .
+i:admin v:hasListenPort 7706 .
+i:admin v:hasNativeIOEnabled 1 .
+i:admin v:hasReliableDeliveryPolicy "RMDefaultPolicy" .
+i:admin v:hasServerVersion "8.1.5.0" .
+i:admin rdfs:label "admin ( Server )" .
+i:elm0 a v:SSL .
+i:elm0 v:hasDomain i:firmas .
+i:elm0 v:hasEnabled 0 .
+i:elm0 v:hasHostnameVerificationIgnored 0 .
+i:elm0 v:hasIdentityAndTrustLocations "KeyStores" .
+i:elm0 rdfs:label "elm0 ( SSL )" .
+i:admin v:contains i:elm0 .
+i:elm1 a v:Log .
+i:elm1 v:hasDomain i:firmas .
+i:elm1 v:hasFileName "/export/weblogic/bea/wlsplatform/config/firmas/logs/admin.log" .
+i:elm1 v:hasNumberOfFilesLimited 1 .
+i:elm1 v:hasRotationType "byTime" .
+i:elm1 rdfs:label "elm1 ( Log )" .
+i:admin v:contains i:elm1 .
+i:firmas v:contains i:admin .
+i:FileStore a v:JMSFileStore .
+i:FileStore v:hasDomain i:firmas .
+i:FileStore v:hasDirectory "rmfilestore" .
+i:FileStore rdfs:label "FileStore ( JMSFileStore )" .
+i:firmas v:contains i:FileStore .
+i:RMDefaultPolicy a v:WSReliableDeliveryPolicy .
+i:RMDefaultPolicy v:hasDomain i:firmas .
+i:RMDefaultPolicy v:hasDefaultRetryCount 10 .
+i:RMDefaultPolicy v:hasDefaultTimeToLive 60000 .
+i:RMDefaultPolicy v:hasStore "FileStore" .
+i:RMDefaultPolicy rdfs:label "RMDefaultPolicy ( WSReliableDeliveryPolicy )" .
+i:firmas v:contains i:RMDefaultPolicy .
+i:elm2 a v:Security .
+i:elm2 v:hasDomain i:firmas .
+i:elm2 v:hasName i:firmas .
+i:elm2 v:hasPasswordPolicy "wl_default_password_policy" .
+i:elm2 v:hasRealm "wl_default_realm" .
+i:elm2 v:hasRealmSetup "true" .
+i:elm2 rdfs:label "elm2 ( Security )" .
+i:firmas v:contains i:elm2 .
+i:elm3 a v:EmbeddedLDAP .
+i:elm3 v:hasDomain i:firmas .
+i:elm3 v:hasCredentialEncrypted "{3DES}i9mUQ8uYh3Y3lG72IzizpRcrdRFhg1+RGcrkWIuG3Yk=" .
+i:elm3 v:hasName i:firmas .
+i:elm3 rdfs:label "elm3 ( EmbeddedLDAP )" .
+i:firmas v:contains i:elm3 .
+i:elm4 a v:SecurityConfiguration .
+i:elm4 v:hasDomain i:firmas .
+i:elm4 v:hasCredentialEncrypted "{3DES}meZpnokYsOvXa4F3GZdo/edDSBSLKrZLrKXfA2U8PbeP/tHUGFHXM/WUfeB2QOYfB7jx9X/E5Yl5770rrGU/OJReQufY9Xw2" .
+i:elm4 v:hasName i:firmas .
+i:elm4 v:hasRealmBootStrapVersion 1 .
+i:elm4 rdfs:label "elm4 ( SecurityConfiguration )" .
+i:firmas v:contains i:elm4 .
+i:wl_default_realm a v:Realm .
+i:wl_default_realm v:hasDomain i:firmas .
+i:wl_default_realm v:hasFileRealm i:wl_default_file_realm .
+i:wl_default_realm rdfs:label "wl_default_realm ( Realm )" .
+i:firmas v:contains i:wl_default_realm .
+i:wl_default_file_realm a v:FileRealm .
+i:wl_default_file_realm v:hasDomain i:firmas .
+i:wl_default_file_realm rdfs:label "wl_default_file_realm ( FileRealm )" .
+i:firmas v:contains i:wl_default_file_realm .
+i:elm5 a v:PasswordPolicy .
+i:elm5 v:hasDomain i:firmas .
+i:elm5 v:hasName "wl_default_password_policy" .
+i:elm5 rdfs:label "elm5 ( PasswordPolicy )" .
+i:firmas v:contains i:elm5 .
+i:elm6 a v:JMSServer .
+i:elm6 v:hasDomain i:firmas .
+i:elm6 v:hasName "WSStoreForwardInternalJMSServeradmin" .
+i:elm6 v:hasStore "FileStore" .
+i:elm6 v:hasTargets i:admin .
+i:elm6 rdfs:label "elm6 ( JMSServer )" .
+i:elm7 a v:JMSQueue .
+i:elm7 v:hasDomain i:firmas .
+i:elm7 v:hasCreationTime 1262789595149 .
+i:elm7 v:hasJNDIName "jms.internal.queue.WSStoreForwardQueue" .
+i:elm7 v:hasJNDINameReplicated 0 .
+i:elm7 v:hasName "WSInternaljms.internal.queue.WSStoreForwardQueueadmin" .
+i:elm7 rdfs:label "elm7 ( JMSQueue )" .
+i:elm6 v:contains i:elm7 .
+i:elm8 a v:JMSQueue .
+i:elm8 v:hasDomain i:firmas .
+i:elm8 v:hasCreationTime 1262789595548 .
+i:elm8 v:hasJNDIName "jms.internal.queue.WSDupsEliminationHistoryQueue" .
+i:elm8 v:hasJNDINameReplicated 0 .
+i:elm8 v:hasName "WSInternaljms.internal.queue.WSDupsEliminationHistoryQueueadmin" .
+i:elm8 rdfs:label "elm8 ( JMSQueue )" .
+i:elm6 v:contains i:elm8 .
+i:firmas v:contains i:elm6 .
+i:FirmasM11 a v:Server .
+i:FirmasM11 v:hasDomain i:firmas .
+i:FirmasM11 v:hasCluster i:ClusterMor1 .
+i:FirmasM11 v:hasExpectedToRun 0 .
+i:FirmasM11 v:hasListenAddress "161.131.154.167" .
+i:FirmasM11 v:hasListenPort 7111 .
+i:FirmasM11 v:hasServerVersion "8.1.5.0" .
+i:FirmasM11 v:hasStagingDirectoryName "/export/weblogic/bea/wlsplatformM11/config/firmas/FirmasM11/stage" .
+i:FirmasM11 v:hasStagingMode "stage" .
+i:FirmasM11 v:hasStdoutSeverityLevel 64 .
+i:FirmasM11 v:hasStuckThreadMaxTime 60 .
+i:FirmasM11 v:hasStuckThreadTimerInterval 60 .
+i:FirmasM11 rdfs:label "FirmasM11 ( Server )" .
+i:elm9 a v:ServerDebug .
+i:elm9 v:hasDomain i:firmas .
+i:elm9 v:hasName "FirmasM11" .
+i:elm9 rdfs:label "elm9 ( ServerDebug )" .
+i:FirmasM11 v:contains i:elm9 .
+i:elm10 a v:SSL .
+i:elm10 v:hasDomain i:firmas .
+i:elm10 v:hasIdentityAndTrustLocations "KeyStores" .
+i:elm10 rdfs:label "elm10 ( SSL )" .
+i:FirmasM11 v:contains i:elm10 .
+i:elm11 a v:KernelDebug .
+i:elm11 v:hasDomain i:firmas .
+i:elm11 v:hasName "FirmasM11" .
+i:elm11 rdfs:label "elm11 ( KernelDebug )" .
+i:FirmasM11 v:contains i:elm11 .
+i:elm12 a v:Log .
+i:elm12 v:hasDomain i:firmas .
+i:elm12 v:hasFileName "/export/weblogic/bea/wlsplatformM11/config/firmas/logs/FirmasM11.log" .
+i:elm12 v:hasNumberOfFilesLimited 1 .
+i:elm12 v:hasRotationType "byTime" .
+i:elm12 rdfs:label "elm12 ( Log )" .
+i:FirmasM11 v:contains i:elm12 .
+i:elm13 a v:ServerStart .
+i:elm13 v:hasDomain i:firmas .
+i:elm13 v:hasOutputFile "/export/weblogic/bea/wlsplatform/config/firmas/NodeManagerClientLogs/firmas_FirmasM11/startServer_02_16_2011-18_09_17-4.log" .
+i:elm13 v:hasPasswordEncrypted "{3DES}mRv9VY+L7TGeF3doyKVd/A==" .
+i:elm13 v:hasUsername "weblogic" .
+i:elm13 rdfs:label "elm13 ( ServerStart )" .
+i:FirmasM11 v:contains i:elm13 .
+i:elm14 a v:WebServer .
+i:elm14 v:hasDomain i:firmas .
+i:elm14 v:hasLogFileLimitEnabled 1 .
+i:elm14 v:hasLogRotationType "date" .
+i:elm14 rdfs:label "elm14 ( WebServer )" .
+i:FirmasM11 v:contains i:elm14 .
+i:elm15 a v:COM .
+i:elm15 v:hasDomain i:firmas .
+i:elm15 rdfs:label "elm15 ( COM )" .
+i:FirmasM11 v:contains i:elm15 .
+i:elm16 a v:IIOP .
+i:elm16 v:hasDomain i:firmas .
+i:elm16 rdfs:label "elm16 ( IIOP )" .
+i:FirmasM11 v:contains i:elm16 .
+i:elm17 a v:JTAMigratableTarget .
+i:elm17 v:hasDomain i:firmas .
+i:elm17 v:hasUserPreferredServer i:FirmasM11 .
+i:elm17 rdfs:label "elm17 ( JTAMigratableTarget )" .
+i:FirmasM11 v:contains i:elm17 .
+i:elm18 a v:JTARecoveryService .
+i:elm18 v:hasDomain i:firmas .
+i:elm18 rdfs:label "elm18 ( JTARecoveryService )" .
+i:FirmasM11 v:contains i:elm18 .
+i:firmas v:contains i:FirmasM11 .
+i:FirmasM12 a v:Server .
+i:FirmasM12 v:hasDomain i:firmas .
+i:FirmasM12 v:hasCluster i:ClusterMor1 .
+i:FirmasM12 v:hasListenAddress "161.131.154.169" .
+i:FirmasM12 v:hasListenPort 7111 .
+i:FirmasM12 v:hasServerVersion "8.1.5.0" .
+i:FirmasM12 v:hasStagingDirectoryName "/export/weblogic/bea/wlsplatformM12/config/firmas/FirmasM12/stage" .
+i:FirmasM12 v:hasStagingMode "stage" .
+i:FirmasM12 v:hasStdoutSeverityLevel 64 .
+i:FirmasM12 v:hasStuckThreadMaxTime 60 .
+i:FirmasM12 v:hasStuckThreadTimerInterval 60 .
+i:FirmasM12 rdfs:label "FirmasM12 ( Server )" .
+i:elm19 a v:ServerDebug .
+i:elm19 v:hasDomain i:firmas .
+i:elm19 v:hasName "FirmasM12" .
+i:elm19 rdfs:label "elm19 ( ServerDebug )" .
+i:FirmasM12 v:contains i:elm19 .
+i:elm20 a v:SSL .
+i:elm20 v:hasDomain i:firmas .
+i:elm20 v:hasIdentityAndTrustLocations "KeyStores" .
+i:elm20 rdfs:label "elm20 ( SSL )" .
+i:FirmasM12 v:contains i:elm20 .
+i:elm21 a v:KernelDebug .
+i:elm21 v:hasDomain i:firmas .
+i:elm21 v:hasName "FirmasM12" .
+i:elm21 rdfs:label "elm21 ( KernelDebug )" .
+i:FirmasM12 v:contains i:elm21 .
+i:elm22 a v:Log .
+i:elm22 v:hasDomain i:firmas .
+i:elm22 v:hasFileName "/export/weblogic/bea/wlsplatformM12/config/firmas/logs/FirmasM12.log" .
+i:elm22 v:hasNumberOfFilesLimited 1 .
+i:elm22 v:hasRotationType "byTime" .
+i:elm22 rdfs:label "elm22 ( Log )" .
+i:FirmasM12 v:contains i:elm22 .
+i:elm23 a v:ServerStart .
+i:elm23 v:hasDomain i:firmas .
+i:elm23 v:hasPasswordEncrypted "{3DES}mRv9VY+L7TGeF3doyKVd/A==" .
+i:elm23 v:hasUsername "weblogic" .
+i:elm23 rdfs:label "elm23 ( ServerStart )" .
+i:FirmasM12 v:contains i:elm23 .
+i:elm24 a v:WebServer .
+i:elm24 v:hasDomain i:firmas .
+i:elm24 v:hasLogFileLimitEnabled 1 .
+i:elm24 v:hasLogRotationType "date" .
+i:elm24 rdfs:label "elm24 ( WebServer )" .
+i:FirmasM12 v:contains i:elm24 .
+i:elm25 a v:COM .
+i:elm25 v:hasDomain i:firmas .
+i:elm25 rdfs:label "elm25 ( COM )" .
+i:FirmasM12 v:contains i:elm25 .
+i:elm26 a v:IIOP .
+i:elm26 v:hasDomain i:firmas .
+i:elm26 rdfs:label "elm26 ( IIOP )" .
+i:FirmasM12 v:contains i:elm26 .
+i:elm27 a v:JTAMigratableTarget .
+i:elm27 v:hasDomain i:firmas .
+i:elm27 v:hasUserPreferredServer i:FirmasM12 .
+i:elm27 rdfs:label "elm27 ( JTAMigratableTarget )" .
+i:FirmasM12 v:contains i:elm27 .
+i:elm28 a v:JTARecoveryService .
+i:elm28 v:hasDomain i:firmas .
+i:elm28 rdfs:label "elm28 ( JTARecoveryService )" .
+i:FirmasM12 v:contains i:elm28 .
+i:firmas v:contains i:FirmasM12 .
+i:FirmasL11 a v:Server .
+i:FirmasL11 v:hasDomain i:firmas .
+i:FirmasL11 v:hasCluster i:ClusterLgv1 .
+i:FirmasL11 v:hasExpectedToRun 0 .
+i:FirmasL11 v:hasListenAddress "161.131.154.217" .
+i:FirmasL11 v:hasListenPort 7111 .
+i:FirmasL11 v:hasServerVersion "8.1.5.0" .
+i:FirmasL11 v:hasStagingDirectoryName "/export/weblogic/bea/wlsplatformL11/config/firmas/FirmasL11/stage" .
+i:FirmasL11 v:hasStagingMode "stage" .
+i:FirmasL11 v:hasStdoutSeverityLevel 64 .
+i:FirmasL11 v:hasStuckThreadMaxTime 60 .
+i:FirmasL11 v:hasStuckThreadTimerInterval 60 .
+i:FirmasL11 rdfs:label "FirmasL11 ( Server )" .
+i:elm29 a v:ServerDebug .
+i:elm29 v:hasDomain i:firmas .
+i:elm29 v:hasName "FirmasL11" .
+i:elm29 rdfs:label "elm29 ( ServerDebug )" .
+i:FirmasL11 v:contains i:elm29 .
+i:elm30 a v:SSL .
+i:elm30 v:hasDomain i:firmas .
+i:elm30 v:hasIdentityAndTrustLocations "KeyStores" .
+i:elm30 rdfs:label "elm30 ( SSL )" .
+i:FirmasL11 v:contains i:elm30 .
+i:elm31 a v:KernelDebug .
+i:elm31 v:hasDomain i:firmas .
+i:elm31 v:hasName "FirmasL11" .
+i:elm31 rdfs:label "elm31 ( KernelDebug )" .
+i:FirmasL11 v:contains i:elm31 .
+i:elm32 a v:Log .
+i:elm32 v:hasDomain i:firmas .
+i:elm32 v:hasFileName "/export/weblogic/bea/wlsplatformL11/config/firmas/logs/FirmasL11.log" .
+i:elm32 v:hasNumberOfFilesLimited 1 .
+i:elm32 v:hasRotationType "byTime" .
+i:elm32 rdfs:label "elm32 ( Log )" .
+i:FirmasL11 v:contains i:elm32 .
+i:elm33 a v:ServerStart .
+i:elm33 v:hasDomain i:firmas .
+i:elm33 v:hasOutputFile "/export/weblogic/bea/wlsplatform/config/firmas/NodeManagerClientLogs/firmas_FirmasL11/startServer_02_16_2011-18_18_51-1.log" .
+i:elm33 v:hasPasswordEncrypted "{3DES}mRv9VY+L7TGeF3doyKVd/A==" .
+i:elm33 v:hasUsername "weblogic" .
+i:elm33 rdfs:label "elm33 ( ServerStart )" .
+i:FirmasL11 v:contains i:elm33 .
+i:elm34 a v:WebServer .
+i:elm34 v:hasDomain i:firmas .
+i:elm34 v:hasLogFileLimitEnabled 1 .
+i:elm34 v:hasLogRotationType "date" .
+i:elm34 rdfs:label "elm34 ( WebServer )" .
+i:FirmasL11 v:contains i:elm34 .
+i:elm35 a v:COM .
+i:elm35 v:hasDomain i:firmas .
+i:elm35 rdfs:label "elm35 ( COM )" .
+i:FirmasL11 v:contains i:elm35 .
+i:elm36 a v:IIOP .
+i:elm36 v:hasDomain i:firmas .
+i:elm36 rdfs:label "elm36 ( IIOP )" .
+i:FirmasL11 v:contains i:elm36 .
+i:elm37 a v:JTAMigratableTarget .
+i:elm37 v:hasDomain i:firmas .
+i:elm37 v:hasUserPreferredServer i:FirmasL11 .
+i:elm37 rdfs:label "elm37 ( JTAMigratableTarget )" .
+i:FirmasL11 v:contains i:elm37 .
+i:elm38 a v:JTARecoveryService .
+i:elm38 v:hasDomain i:firmas .
+i:elm38 rdfs:label "elm38 ( JTARecoveryService )" .
+i:FirmasL11 v:contains i:elm38 .
+i:firmas v:contains i:FirmasL11 .
+i:FirmasL12 a v:Server .
+i:FirmasL12 v:hasDomain i:firmas .
+i:FirmasL12 v:hasCluster i:ClusterLgv1 .
+i:FirmasL12 v:hasExpectedToRun 0 .
+i:FirmasL12 v:hasListenAddress "161.131.154.218" .
+i:FirmasL12 v:hasListenPort 7111 .
+i:FirmasL12 v:hasServerVersion "8.1.5.0" .
+i:FirmasL12 v:hasStagingDirectoryName "/export/weblogic/bea/wlsplatformL12/config/firmas/FirmasL12/stage" .
+i:FirmasL12 v:hasStagingMode "stage" .
+i:FirmasL12 v:hasStdoutSeverityLevel 64 .
+i:FirmasL12 v:hasStuckThreadMaxTime 60 .
+i:FirmasL12 v:hasStuckThreadTimerInterval 60 .
+i:FirmasL12 rdfs:label "FirmasL12 ( Server )" .
+i:elm39 a v:ServerDebug .
+i:elm39 v:hasDomain i:firmas .
+i:elm39 v:hasName "FirmasL12" .
+i:elm39 rdfs:label "elm39 ( ServerDebug )" .
+i:FirmasL12 v:contains i:elm39 .
+i:elm40 a v:SSL .
+i:elm40 v:hasDomain i:firmas .
+i:elm40 v:hasIdentityAndTrustLocations "KeyStores" .
+i:elm40 rdfs:label "elm40 ( SSL )" .
+i:FirmasL12 v:contains i:elm40 .
+i:elm41 a v:KernelDebug .
+i:elm41 v:hasDomain i:firmas .
+i:elm41 v:hasName "FirmasL12" .
+i:elm41 rdfs:label "elm41 ( KernelDebug )" .
+i:FirmasL12 v:contains i:elm41 .
+i:elm42 a v:Log .
+i:elm42 v:hasDomain i:firmas .
+i:elm42 v:hasFileName "/export/weblogic/bea/wlsplatformL12/config/firmas/logs/FirmasL12.log" .
+i:elm42 v:hasNumberOfFilesLimited 1 .
+i:elm42 v:hasRotationType "byTime" .
+i:elm42 rdfs:label "elm42 ( Log )" .
+i:FirmasL12 v:contains i:elm42 .
+i:elm43 a v:ServerStart .
+i:elm43 v:hasDomain i:firmas .
+i:elm43 v:hasPasswordEncrypted "{3DES}mRv9VY+L7TGeF3doyKVd/A==" .
+i:elm43 v:hasUsername "weblogic" .
+i:elm43 rdfs:label "elm43 ( ServerStart )" .
+i:FirmasL12 v:contains i:elm43 .
+i:elm44 a v:WebServer .
+i:elm44 v:hasDomain i:firmas .
+i:elm44 v:hasLogFileLimitEnabled 1 .
+i:elm44 v:hasLogRotationType "date" .
+i:elm44 rdfs:label "elm44 ( WebServer )" .
+i:FirmasL12 v:contains i:elm44 .
+i:elm45 a v:COM .
+i:elm45 v:hasDomain i:firmas .
+i:elm45 rdfs:label "elm45 ( COM )" .
+i:FirmasL12 v:contains i:elm45 .
+i:elm46 a v:IIOP .
+i:elm46 v:hasDomain i:firmas .
+i:elm46 rdfs:label "elm46 ( IIOP )" .
+i:FirmasL12 v:contains i:elm46 .
+i:elm47 a v:JTAMigratableTarget .
+i:elm47 v:hasDomain i:firmas .
+i:elm47 v:hasUserPreferredServer i:FirmasL12 .
+i:elm47 rdfs:label "elm47 ( JTAMigratableTarget )" .
+i:FirmasL12 v:contains i:elm47 .
+i:elm48 a v:JTARecoveryService .
+i:elm48 v:hasDomain i:firmas .
+i:elm48 rdfs:label "elm48 ( JTARecoveryService )" .
+i:FirmasL12 v:contains i:elm48 .
+i:firmas v:contains i:FirmasL12 .
+i:ClusterLgv1 a v:Cluster .
+i:ClusterLgv1 v:hasDomain i:firmas .
+i:ClusterLgv1 v:hasClusterAddress "161.131.154.217:7111" .
+i:ClusterLgv1 v:hasClusterAddress "161.131.154.218:7111" .
+i:ClusterLgv1 v:hasMulticastAddress "237.100.200.4" .
+i:ClusterLgv1 v:hasWeblogicPluginEnabled 1 .
+i:ClusterLgv1 rdfs:label "ClusterLgv1 ( Cluster )" .
+i:firmas v:contains i:ClusterLgv1 .
+i:ClusterMor1 a v:Cluster .
+i:ClusterMor1 v:hasDomain i:firmas .
+i:ClusterMor1 v:hasClusterAddress "161.131.154.167:7111" .
+i:ClusterMor1 v:hasClusterAddress "161.131.154.169:7111" .
+i:ClusterMor1 v:hasMulticastAddress "237.100.200.2" .
+i:ClusterMor1 v:hasWeblogicPluginEnabled 1 .
+i:ClusterMor1 rdfs:label "ClusterMor1 ( Cluster )" .
+i:firmas v:contains i:ClusterMor1 .
+i:elm49 a v:MigratableTarget .
+i:elm49 v:hasDomain i:firmas .
+i:elm49 v:hasCluster i:ClusterLgv1 .
+i:elm49 v:hasName "FirmasL11 (migratable)" .
+i:elm49 v:hasNotes "This is a system generated default migratable target for a server. Do not delete manually." .
+i:elm49 v:hasUserPreferredServer i:FirmasL11 .
+i:elm49 rdfs:label "elm49 ( MigratableTarget )" .
+i:firmas v:contains i:elm49 .
+i:elm50 a v:MigratableTarget .
+i:elm50 v:hasDomain i:firmas .
+i:elm50 v:hasCluster i:ClusterLgv1 .
+i:elm50 v:hasName "FirmasL12 (migratable)" .
+i:elm50 v:hasNotes "This is a system generated default migratable target for a server. Do not delete manually." .
+i:elm50 v:hasUserPreferredServer i:FirmasL12 .
+i:elm50 rdfs:label "elm50 ( MigratableTarget )" .
+i:firmas v:contains i:elm50 .
+i:elm51 a v:MigratableTarget .
+i:elm51 v:hasDomain i:firmas .
+i:elm51 v:hasCluster i:ClusterMor1 .
+i:elm51 v:hasName "FirmasM11 (migratable)" .
+i:elm51 v:hasNotes "This is a system generated default migratable target for a server. Do not delete manually." .
+i:elm51 v:hasUserPreferredServer i:FirmasM11 .
+i:elm51 rdfs:label "elm51 ( MigratableTarget )" .
+i:firmas v:contains i:elm51 .
+i:elm52 a v:MigratableTarget .
+i:elm52 v:hasDomain i:firmas .
+i:elm52 v:hasCluster i:ClusterMor1 .
+i:elm52 v:hasName "FirmasM12 (migratable)" .
+i:elm52 v:hasNotes "This is a system generated default migratable target for a server. Do not delete manually." .
+i:elm52 v:hasUserPreferredServer i:FirmasM12 .
+i:elm52 rdfs:label "elm52 ( MigratableTarget )" .
+i:firmas v:contains i:elm52 .
+i:elm53 a v:UnixMachine .
+i:elm53 v:hasDomain i:firmas .
+i:elm53 rdfs:label "elm53 ( UnixMachine )" .
+i:elm54 a v:NodeManager .
+i:elm54 v:hasDomain i:firmas .
+i:elm54 rdfs:label "elm54 ( NodeManager )" .
+i:elm53 v:contains i:elm54 .
+i:firmas v:contains i:elm53 .
+i:elm55 a v:Log .
+i:elm55 v:hasDomain i:firmas .
+i:elm55 v:hasFileName "/export/weblogic/bea/wlsplatform/config/firmas/logs/adminFirmas.log" .
+i:elm55 v:hasNumberOfFilesLimited 1 .
+i:elm55 v:hasRotationType "byTime" .
+i:elm55 rdfs:label "elm55 ( Log )" .
+i:firmas v:contains i:elm55 .
+i:jdbc__NotSPF010 a v:JDBCConnectionPool .
+i:jdbc__NotSPF010 v:hasDomain i:firmas .
+i:jdbc__NotSPF010 v:hasConnLeakProfilingEnabled 1 .
+i:jdbc__NotSPF010 v:hasConnProfilingEnabled 1 .
+i:jdbc__NotSPF010 v:hasConnectionCreationRetryFrequencySeconds 1 .
+i:jdbc__NotSPF010 v:hasConnectionReserveTimeoutSeconds 5 .
+i:jdbc__NotSPF010 v:hasDriverName "com.microsoft.sqlserver.jdbc.SQLServerDriver" .
+i:jdbc__NotSPF010 v:hasInactiveConnectionTimeoutSeconds 60 .
+i:jdbc__NotSPF010 v:hasInitSQL "" .
+i:jdbc__NotSPF010 v:hasLoginDelaySeconds 1 .
+i:jdbc__NotSPF010 v:hasMaxCapacity 5 .
+i:jdbc__NotSPF010 v:hasPasswordEncrypted "{3DES}TFrZC7wQWdJkG3g6Yr1IZQ==" .
+i:jdbc__NotSPF010 v:hasProperty_user "pool_notspf" .
+i:jdbc__NotSPF010 v:hasProperties "user=pool_notspf" .
+i:jdbc__NotSPF010 v:hasRemoveInfectedConnectionsEnabled 0 .
+i:jdbc__NotSPF010 v:hasSecondsToTrustAnIdlePoolConnection 2 .
+i:jdbc__NotSPF010 v:hasShrinkFrequencySeconds 1800 .
+i:jdbc__NotSPF010 v:hasStatementCacheSize 30 .
+i:jdbc__NotSPF010 v:hasTargets i:ClusterLgv1 .
+i:jdbc__NotSPF010 v:hasTargets i:ClusterMor1 .
+i:jdbc__NotSPF010 v:hasTestConnectionsOnReserve 1 .
+i:jdbc__NotSPF010 v:hasTestFrequencySeconds 10 .
+i:jdbc__NotSPF010 v:hasTestTableName "SQL SELECT 1" .
+i:jdbc__NotSPF010 v:hasURL "jdbc:sqlserver://161.131.198.63:1433;databaseName=NotSPF010;;SelectMethod=cursor" .
+i:jdbc__NotSPF010 rdfs:label "jdbc__NotSPF010 ( JDBCConnectionPool )" .
+i:firmas v:contains i:jdbc__NotSPF010 .
+i:jdbc__NotPer010 a v:JDBCConnectionPool .
+i:jdbc__NotPer010 v:hasDomain i:firmas .
+i:jdbc__NotPer010 v:hasConnLeakProfilingEnabled 1 .
+i:jdbc__NotPer010 v:hasConnProfilingEnabled 1 .
+i:jdbc__NotPer010 v:hasConnectionCreationRetryFrequencySeconds 1 .
+i:jdbc__NotPer010 v:hasConnectionReserveTimeoutSeconds 5 .
+i:jdbc__NotPer010 v:hasDriverName "com.microsoft.sqlserver.jdbc.SQLServerDriver" .
+i:jdbc__NotPer010 v:hasInactiveConnectionTimeoutSeconds 60 .
+i:jdbc__NotPer010 v:hasInitSQL "" .
+i:jdbc__NotPer010 v:hasLoginDelaySeconds 1 .
+i:jdbc__NotPer010 v:hasMaxCapacity 5 .
+i:jdbc__NotPer010 v:hasPasswordEncrypted "{3DES}TFrZC7wQWdI51wD7Mo/nhQ==" .
+i:jdbc__NotPer010 v:hasProperty_user "pool_notper" .
+i:jdbc__NotPer010 v:hasProperties "user=pool_notper" .
+i:jdbc__NotPer010 v:hasRemoveInfectedConnectionsEnabled 0 .
+i:jdbc__NotPer010 v:hasSecondsToTrustAnIdlePoolConnection 2 .
+i:jdbc__NotPer010 v:hasShrinkFrequencySeconds 1800 .
+i:jdbc__NotPer010 v:hasStatementCacheSize 30 .
+i:jdbc__NotPer010 v:hasTargets i:ClusterLgv1 .
+i:jdbc__NotPer010 v:hasTargets i:ClusterMor1 .
+i:jdbc__NotPer010 v:hasTestConnectionsOnReserve 1 .
+i:jdbc__NotPer010 v:hasTestFrequencySeconds 10 .
+i:jdbc__NotPer010 v:hasTestTableName "SQL SELECT 1" .
+i:jdbc__NotPer010 v:hasURL "jdbc:sqlserver://161.131.198.63:1433;databaseName=NotPer010;;SelectMethod=cursor" .
+i:jdbc__NotPer010 rdfs:label "jdbc__NotPer010 ( JDBCConnectionPool )" .
+i:firmas v:contains i:jdbc__NotPer010 .
+i:jdbc__firmas a v:JDBCConnectionPool .
+i:jdbc__firmas v:hasDomain i:firmas .
+i:jdbc__firmas v:hasConnLeakProfilingEnabled 1 .
+i:jdbc__firmas v:hasConnProfilingEnabled 1 .
+i:jdbc__firmas v:hasConnectionCreationRetryFrequencySeconds 1 .
+i:jdbc__firmas v:hasConnectionReserveTimeoutSeconds 5 .
+i:jdbc__firmas v:hasDriverName "com.sybase.jdbc3.jdbc.SybDriver" .
+i:jdbc__firmas v:hasInactiveConnectionTimeoutSeconds 60 .
+i:jdbc__firmas v:hasInitSQL "" .
+i:jdbc__firmas v:hasLoginDelaySeconds 1 .
+i:jdbc__firmas v:hasMaxCapacity 5 .
+i:jdbc__firmas v:hasPasswordEncrypted "{3DES}c5/zi97rpieqmrrTIfNmlA==" .
+i:jdbc__firmas v:hasProperty_user "pool_firmas" .
+i:jdbc__firmas v:hasProperties "user=pool_firmas" .
+i:jdbc__firmas v:hasRemoveInfectedConnectionsEnabled 0 .
+i:jdbc__firmas v:hasSecondsToTrustAnIdlePoolConnection 2 .
+i:jdbc__firmas v:hasShrinkFrequencySeconds 1800 .
+i:jdbc__firmas v:hasStatementCacheSize 30 .
+i:jdbc__firmas v:hasTargets i: .
+i:jdbc__firmas v:hasTestConnectionsOnReserve 1 .
+i:jdbc__firmas v:hasTestFrequencySeconds 10 .
+i:jdbc__firmas v:hasTestTableName "SQL SELECT 1" .
+i:jdbc__firmas v:hasURL_server "161.131.232.64" .
+i:jdbc__firmas v:hasURL_port 7000 .
+i:jdbc__firmas v:hasURL_db "firmas" .
+i:jdbc__firmas v:hasURL "jdbc:sybase:Tds:161.131.232.64:7000/firmas" .
+i:jdbc__firmas rdfs:label "jdbc__firmas ( JDBCConnectionPool )" .
+i:firmas v:contains i:jdbc__firmas .
+i:elm56 a v:JDBCTxDataSource .
+i:elm56 v:hasDomain i:firmas .
+i:elm56 v:hasJNDIName "ds/firmas" .
+i:elm56 v:hasName "ds/firmas" .
+i:elm56 v:hasPoolName "jdbc/firmas" .
+i:elm56 v:hasTargets i: .
+i:elm56 rdfs:label "elm56 ( JDBCTxDataSource )" .
+i:firmas v:contains i:elm56 .
+i:elm57 a v:JDBCTxDataSource .
+i:elm57 v:hasDomain i:firmas .
+i:elm57 v:hasJNDIName "ds/NotPer010" .
+i:elm57 v:hasName "ds/NotPer010" .
+i:elm57 v:hasPoolName "jdbc/NotPer010" .
+i:elm57 v:hasTargets i:ClusterLgv1 .
+i:elm57 v:hasTargets i:ClusterMor1 .
+i:elm57 rdfs:label "elm57 ( JDBCTxDataSource )" .
+i:firmas v:contains i:elm57 .
+i:elm58 a v:JDBCTxDataSource .
+i:elm58 v:hasDomain i:firmas .
+i:elm58 v:hasJNDIName "ds/NotSPF010" .
+i:elm58 v:hasName "ds/NotSPF010" .
+i:elm58 v:hasPoolName "jdbc/NotSPF010" .
+i:elm58 v:hasTargets i:ClusterLgv1 .
+i:elm58 v:hasTargets i:ClusterMor1 .
+i:elm58 rdfs:label "elm58 ( JDBCTxDataSource )" .
+i:firmas v:contains i:elm58 .
+i:jdbc__dgc a v:JDBCConnectionPool .
+i:jdbc__dgc v:hasDomain i:firmas .
+i:jdbc__dgc v:hasConnLeakProfilingEnabled 1 .
+i:jdbc__dgc v:hasConnProfilingEnabled 1 .
+i:jdbc__dgc v:hasConnectionCreationRetryFrequencySeconds 1 .
+i:jdbc__dgc v:hasConnectionReserveTimeoutSeconds 5 .
+i:jdbc__dgc v:hasDriverName "com.sybase.jdbc3.jdbc.SybDriver" .
+i:jdbc__dgc v:hasInactiveConnectionTimeoutSeconds 60 .
+i:jdbc__dgc v:hasLoginDelaySeconds 1 .
+i:jdbc__dgc v:hasMaxCapacity 5 .
+i:jdbc__dgc v:hasPasswordEncrypted "{3DES}L5KC8CMjL9s6TePMHl/jug==" .
+i:jdbc__dgc v:hasProperty_user "pool_fypdgc" .
+i:jdbc__dgc v:hasProperties "user=pool_fypdgc" .
+i:jdbc__dgc v:hasRemoveInfectedConnectionsEnabled 0 .
+i:jdbc__dgc v:hasSecondsToTrustAnIdlePoolConnection 2 .
+i:jdbc__dgc v:hasShrinkFrequencySeconds 1800 .
+i:jdbc__dgc v:hasStatementCacheSize 30 .
+i:jdbc__dgc v:hasTargets i:ClusterLgv1 .
+i:jdbc__dgc v:hasTargets i:ClusterMor1 .
+i:jdbc__dgc v:hasTestConnectionsOnReserve 1 .
+i:jdbc__dgc v:hasTestFrequencySeconds 10 .
+i:jdbc__dgc v:hasTestTableName "SQL SELECT 1" .
+i:jdbc__dgc v:hasURL_server "161.131.232.83" .
+i:jdbc__dgc v:hasURL_port 6000 .
+i:jdbc__dgc v:hasURL_db "dgc" .
+i:jdbc__dgc v:hasURL "jdbc:sybase:Tds:161.131.232.83:6000/dgc" .
+i:jdbc__dgc rdfs:label "jdbc__dgc ( JDBCConnectionPool )" .
+i:firmas v:contains i:jdbc__dgc .
+i:elm59 a v:JDBCTxDataSource .
+i:elm59 v:hasDomain i:firmas .
+i:elm59 v:hasJNDIName "ds/dgc" .
+i:elm59 v:hasName "ds/dgc" .
+i:elm59 v:hasPoolName "jdbc/dgc" .
+i:elm59 v:hasTargets i:ClusterLgv1 .
+i:elm59 v:hasTargets i:ClusterMor1 .
+i:elm59 rdfs:label "elm59 ( JDBCTxDataSource )" .
+i:firmas v:contains i:elm59 .
+i:NotEntorno010 a v:Application .
+i:NotEntorno010 v:hasDomain i:firmas .
+i:NotEntorno010 v:hasPath "/export/weblogic/bea/wlsplatform/config/firmas/applications" .
+i:NotEntorno010 v:hasStagedTargets i:FirmasM11 .
+i:NotEntorno010 v:hasStagedTargets i:FirmasL11 .
+i:NotEntorno010 v:hasStagedTargets i:FirmasL12 .
+i:NotEntorno010 v:hasStagedTargets i:FirmasM12 .
+i:NotEntorno010 v:hasStagingMode "stage" .
+i:NotEntorno010 v:hasTwoPhase 1 .
+i:NotEntorno010 rdfs:label "NotEntorno010 ( Application )" .
+i:elm60 a v:WebAppComponent .
+i:elm60 v:hasDomain i:firmas .
+i:elm60 v:hasName "NotEntorno010" .
+i:elm60 v:hasTargets i:ClusterLgv1 .
+i:elm60 v:hasTargets i:ClusterMor1 .
+i:elm60 v:hasURI "NotEntorno010.war" .
+i:elm60 rdfs:label "elm60 ( WebAppComponent )" .
+i:NotEntorno010 v:contains i:elm60 .
+i:firmas v:contains i:NotEntorno010 .
+i:NotLogLDAP010 a v:Application .
+i:NotLogLDAP010 v:hasDomain i:firmas .
+i:NotLogLDAP010 v:hasPath "/export/weblogic/bea/wlsplatform/config/firmas/applications" .
+i:NotLogLDAP010 v:hasStagedTargets i:FirmasL11 .
+i:NotLogLDAP010 v:hasStagedTargets i:FirmasL12 .
+i:NotLogLDAP010 v:hasStagedTargets i:FirmasM11 .
+i:NotLogLDAP010 v:hasStagedTargets i:FirmasM12 .
+i:NotLogLDAP010 v:hasStagingMode "stage" .
+i:NotLogLDAP010 v:hasTwoPhase 1 .
+i:NotLogLDAP010 rdfs:label "NotLogLDAP010 ( Application )" .
+i:elm61 a v:WebAppComponent .
+i:elm61 v:hasDomain i:firmas .
+i:elm61 v:hasName "NotLogLDAP010" .
+i:elm61 v:hasTargets i:ClusterLgv1 .
+i:elm61 v:hasTargets i:ClusterMor1 .
+i:elm61 v:hasURI "NotLogLDAP010.war" .
+i:elm61 rdfs:label "elm61 ( WebAppComponent )" .
+i:NotLogLDAP010 v:contains i:elm61 .
+i:firmas v:contains i:NotLogLDAP010 .
+i:NotPerBCI010 a v:Application .
+i:NotPerBCI010 v:hasDomain i:firmas .
+i:NotPerBCI010 v:hasPath "/export/weblogic/bea/wlsplatform/config/firmas/applications" .
+i:NotPerBCI010 v:hasStagedTargets i:FirmasL11 .
+i:NotPerBCI010 v:hasStagedTargets i:FirmasL12 .
+i:NotPerBCI010 v:hasStagedTargets i:FirmasM11 .
+i:NotPerBCI010 v:hasStagedTargets i:FirmasM12 .
+i:NotPerBCI010 v:hasStagingMode "stage" .
+i:NotPerBCI010 v:hasTwoPhase 1 .
+i:NotPerBCI010 rdfs:label "NotPerBCI010 ( Application )" .
+i:elm62 a v:WebAppComponent .
+i:elm62 v:hasDomain i:firmas .
+i:elm62 v:hasName "NotPerBCI010" .
+i:elm62 v:hasTargets i:ClusterMor1 .
+i:elm62 v:hasTargets i:ClusterLgv1 .
+i:elm62 v:hasURI "NotPerBCI010.war" .
+i:elm62 rdfs:label "elm62 ( WebAppComponent )" .
+i:NotPerBCI010 v:contains i:elm62 .
+i:firmas v:contains i:NotPerBCI010 .
+i:NotarizaSPF010 a v:Application .
+i:NotarizaSPF010 v:hasDomain i:firmas .
+i:NotarizaSPF010 v:hasPath "/export/weblogic/bea/wlsplatform/config/firmas/applications" .
+i:NotarizaSPF010 v:hasStagedTargets i:FirmasM11 .
+i:NotarizaSPF010 v:hasStagedTargets i:FirmasL11 .
+i:NotarizaSPF010 v:hasStagedTargets i:FirmasL12 .
+i:NotarizaSPF010 v:hasStagedTargets i:FirmasM12 .
+i:NotarizaSPF010 v:hasStagingMode "stage" .
+i:NotarizaSPF010 v:hasTwoPhase 1 .
+i:NotarizaSPF010 rdfs:label "NotarizaSPF010 ( Application )" .
+i:elm63 a v:WebAppComponent .
+i:elm63 v:hasDomain i:firmas .
+i:elm63 v:hasName "NotarizaSPF010" .
+i:elm63 v:hasTargets i:ClusterLgv1 .
+i:elm63 v:hasTargets i:ClusterMor1 .
+i:elm63 v:hasURI "NotarizaSPF010.war" .
+i:elm63 rdfs:label "elm63 ( WebAppComponent )" .
+i:NotarizaSPF010 v:contains i:elm63 .
+i:firmas v:contains i:NotarizaSPF010 .

@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix v: <http://www.TREE3e.com/v/comandos/> . 
+@prefix i: <http://data.TREE3e.com/comandos.ttl/> .
+i:comandomv0 v:entrada "mostrar"
+i:comandomv0 v:nodo "/TREE3e/eCommerce/MaomaVa/Categorias" .
+i:comandomv0 v:salida "w3m -dump_source http://www.maomava.cl/carro/ |sed 's/<\/li>/\n/g'|egrep -f grep.list |awk -F"href=" '{print $2}'|grep http|awk -Fhttp '{print "http"$2}'|sed 's/<\/a>//'|sed 's/"//'|egrep -v -f categoria.exclude |awk -F">" '{print "["NR"]",$2}'" .
+i:comandomv1 v:entrada "categoria"
+i:comandomv1 v:nodo "/TREE3e/eCommerce/MaomaVa" .
+i:comandomv1 v:salida "categoriaMV.sh" .
+i:comando0 v:vcompleto "donde estoy" .
+i:comando0 v:vcorto "de" .
+i:comando0 v:accion "cat $homeTREE3e/$USER.nodo" .
+i:comando0 v:informacion "Leer el nodo actual y los nodos disponibles. Indica la posición actual donde se encuentra su ELO" .
+i:comando0 v:nodo "todos"
+i:comando1 v:completo "ayuda" .
+i:comando1 v:corto "ay" .
+i:comando1 v:accion "SPQRQL (Todos los comandos con atributo completo)" .
+i:comando1 v:informacion "Entrega las opciones generales que aplican a todos los nodos" .
+i:comando2 v:completo "atras" .
+i:comando2 v:corto "at" .
+i:comando2 v:accion "Borrar el ultimo nodo de $USER.nodo, /TREE3e es el nodo mas pequeño que se puede tener" .
+i:comando2 v:informacion "Retrocede un nodo desde la posición actual. para saber la posicion actual debe ejecutar /donde estoy(de)/" .
+i:comando3 v:completo "inicio" .
+i:comando3 v:corto "in" .
+i:comando3 v:accion "Borrar todo y deja solo /TREE3e" .
+i:comando3 v:informacion "Vuelve al nucleo. El origen de todo es TREE3e con 3 ramas o nodos: eLearning, eCommerce, eControl" .
+i:comando4 v:completo "nodos disponibles" .
+i:comando4 v:corto "nd" .
+i:comando4 v:accion "Muestra los nodos disponibles " .
+i:comando4 v:informacion "Muestra los nodos disponibles desde la posicion actual" .
+i:comando5 v:completo "opciones" .
+i:comando5 v:corto "op" .
+i:comando5 v:accion "mostrar nodos o acciones disponibles, deben quedar cargados los nodos para su lectura" .
+i:comando5 v:informacion "Acciones que se pueden ejecutar o nodos a los que se puede ingresar, depende del nodo actual. No es igual que el comando ayuda" .
+i:comando6 v:completo "mostrar" .
+i:comando6 v:corto "mo" .
+i:comando6 v:accion "SPARQL de los datos cargados al seleccionar el nodo" .
+i:comando6 v:informacion "muestra la informacion del ultimo nodo, es el nodo final de una rama y solo tiene atributos" .
+i:comando7 v:completo "posicion anterior" .
+i:comando7 v:corto "pa" .
+i:comando7 v:accion "Vuelva a la posicion justamente anterior al ultimo cambio de nodo" .
+i:comando7 v:informacion "Vuelva a la posicion justamente antrioro al ultimo cambio de nodo" .
+i:comando8 v:completo "nodo $VARIABLE" .
+i:comando8 v:corto "n $VARIABLE" .
+i:comando8 v:accion "Va al nodo especificado en $VARIABLE" .
+i:comando8 v:informacion "Va al nodo especificado en $VARIABLE" .
+i:comando8 v:completo "ELSE" .
+i:comando8 v:corto "" .
+i:comando8 v:accion "RANDOM DE MENSAJES DE ERORR" .
+i:comando8 v:informacion "no entiendo, parece que te equivocaste, ERROR!!!, intenta de nuevo, que?, como?" .
